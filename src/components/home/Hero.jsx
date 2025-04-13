@@ -76,7 +76,7 @@ const Hero = () => {
         <div className="relative z-10 text-center sm:text-left">
           <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
             <span className="block">Hi, I'm Poornachandra Doddi</span>
-            <span className="block mt-2 text-blue-600 dark:text-blue-400 h-16">
+            <span className="block mt-2 text-blue-600 dark:text-blue-400">
               I'm <span className="inline-block min-w-0">{typedText}</span>
               <span className="animate-blink">|</span>
             </span>
@@ -122,7 +122,7 @@ ll binpow(ll a, ll b, ll m = 1e18) {
     while (b > 0) {
         if (b & 1)
             res = res * a % m;
-        a = a * a % m; b >> = 1;
+        a = a * a % m; b >>= 1;
     }
     return res;
 }
