@@ -16,7 +16,7 @@ const Projects = () => {
       tags: ['FastAPI', 'Streamlit', 'Google Gemini 2.0', 'LangChain', 'FAISS', 'Python'],
       category: 'ai',
       link: '#',
-      githubLink: 'https://github.com/Poornakgps',
+      githubLink: 'https://github.com/Poornakgps/AI_Agents',
       image: '/assets/images/pdf-qa.png',
       date: 'Jan 2025 - Present'
     },
@@ -40,7 +40,7 @@ const Projects = () => {
       tags: ['AWS Lambda', 'API Gateway', 'DynamoDB', 'S3', 'CloudWatch', 'Python'],
       category: 'backend',
       link: '#',
-      githubLink: 'https://github.com/Poornakgps',
+      githubLink: 'https://github.com/Poornakgps/Todo-AWS-Serverless-Application',
       image: '/assets/images/todo-app.png',
       date: 'July 2024'
     },
@@ -52,7 +52,7 @@ const Projects = () => {
       tags: ['Node.js', 'PostgreSQL', 'Express', 'Sequelize', 'JWT'],
       category: 'backend',
       link: '#',
-      githubLink: 'https://github.com/Poornakgps',
+      githubLink: 'https://github.com/Poornakgps/CliqueConnect',
       image: '/assets/images/social-media.png',
       date: 'July 2024'
     }
