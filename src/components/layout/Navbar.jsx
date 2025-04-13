@@ -6,6 +6,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const location = useLocation();
+  const basePath = '/Portfolio';
 
   useEffect(() => {
     // Check for user preference
@@ -38,12 +39,12 @@ const Navbar = () => {
   }, [location]);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Experience', path: '/experience' },
-    { name: 'Skills', path: '/skills' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'CP Profile', path: '/competitive' }
+    { name: 'Home', path: basePath },
+    { name: 'About', path: `${basePath}/about` },
+    { name: 'Experience', path: `${basePath}/experience` },
+    { name: 'Skills', path: `${basePath}/skills` },
+    { name: 'Projects', path: `${basePath}/projects` },
+    { name: 'CP Profile', path: `${basePath}/competitive` }
   ];
 
   return (
@@ -51,7 +52,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center">
+            <Link to={basePath} className="flex items-center">
               <Code className="h-8 w-8 text-blue-600 dark:text-blue-400" />
               <span className="ml-2 text-xl font-bold">Poornachandra</span>
             </Link>
