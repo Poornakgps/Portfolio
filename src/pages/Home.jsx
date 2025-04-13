@@ -5,7 +5,7 @@ import Hero from '../components/home/Hero';
 import Stats from '../components/home/Stats';
 import Section from '../components/ui/Section';
 import ProjectCard from '../components/projects/ProjectCard';
-import RatingGraph from '../components/ui/RatingGraph';
+import competitiveData from '../data/competitive';
 
 const Home = () => {
   const stats = [
@@ -51,7 +51,6 @@ const Home = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
             <h3 className="text-xl font-bold mb-4">Rating History</h3>
-            <RatingGraph />
             <div className="mt-4 flex justify-between items-center">
               <div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">

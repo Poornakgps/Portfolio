@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Legend } from 'recharts';
 import { ChevronDown } from 'lucide-react';
+import competitiveData from '../../data/competitive';
 
 const RatingChart = ({ ratingData }) => {
   const [selectedPlatform, setSelectedPlatform] = useState('all');
   
-  const { codeforces, codechef } = ratingData;
+  // Get data from the competitive data file if not provided as props
+  const { codeforces, codechef } = ratingData || competitiveData.ratingHistory || {
+    codeforces: [],
+    codechef: []
+  };
   
   // Combined data for 'all' view
   const combinedData = [
-    ...codeforces.map(item => ({
+    ...(codeforces || []).map(item => ({
       ...item,
       platform: 'Codeforces',
       color: '#3B82F6'
     })),
-    ...codechef.map(item => ({
+    ...(codechef || []).map(item => ({
       ...item,
       platform: 'CodeChef',
       color: '#EC4899'
@@ -25,14 +30,14 @@ const RatingChart = ({ ratingData }) => {
   const chartData = selectedPlatform === 'all' 
     ? combinedData 
     : selectedPlatform === 'codeforces' 
-      ? codeforces 
-      : codechef;
+      ? codeforces || []
+      : codechef || [];
   
   // Define domain values
-  const yDomain = [
+  const yDomain = combinedData.length > 0 ? [
     Math.min(...combinedData.map(item => item.rating)) - 50,
     Math.max(...combinedData.map(item => item.rating)) + 50
-  ];
+  ] : [1200, 2000]; // Default range if no data
   
   // Rating threshold reference lines
   const referenceLines = [
@@ -60,6 +65,15 @@ const RatingChart = ({ ratingData }) => {
     }
     return null;
   };
+  
+  // If no data is available, return a message
+  if ((!codeforces || codeforces.length === 0) && (!codechef || codechef.length === 0)) {
+    return (
+      <div className="flex items-center justify-center h-64 bg-gray-50 dark:bg-gray-800 rounded-lg">
+        <p className="text-gray-500 dark:text-gray-400">Rating history data not available</p>
+      </div>
+    );
+  }
   
   return (
     <div className="w-full">
@@ -111,26 +125,30 @@ const RatingChart = ({ ratingData }) => {
             {selectedPlatform === 'all' ? (
               <>
                 <Legend />
-                <Line 
-                  name="Codeforces"
-                  type="monotone" 
-                  dataKey="rating" 
-                  data={chartData.filter(item => item.platform === 'Codeforces')} 
-                  stroke="#3B82F6" 
-                  strokeWidth={2}
-                  dot={{ r: 4, stroke: '#3B82F6', strokeWidth: 2, fill: '#FFFFFF' }}
-                  activeDot={{ r: 6, stroke: '#3B82F6', strokeWidth: 2, fill: '#3B82F6' }}
-                />
-                <Line 
-                  name="CodeChef"
-                  type="monotone" 
-                  dataKey="rating" 
-                  data={chartData.filter(item => item.platform === 'CodeChef')} 
-                  stroke="#EC4899" 
-                  strokeWidth={2}
-                  dot={{ r: 4, stroke: '#EC4899', strokeWidth: 2, fill: '#FFFFFF' }}
-                  activeDot={{ r: 6, stroke: '#EC4899', strokeWidth: 2, fill: '#EC4899' }}
-                />
+                {codeforces && codeforces.length > 0 && (
+                  <Line 
+                    name="Codeforces"
+                    type="monotone" 
+                    dataKey="rating" 
+                    data={chartData.filter(item => item.platform === 'Codeforces')} 
+                    stroke="#3B82F6" 
+                    strokeWidth={2}
+                    dot={{ r: 4, stroke: '#3B82F6', strokeWidth: 2, fill: '#FFFFFF' }}
+                    activeDot={{ r: 6, stroke: '#3B82F6', strokeWidth: 2, fill: '#3B82F6' }}
+                  />
+                )}
+                {codechef && codechef.length > 0 && (
+                  <Line 
+                    name="CodeChef"
+                    type="monotone" 
+                    dataKey="rating" 
+                    data={chartData.filter(item => item.platform === 'CodeChef')} 
+                    stroke="#EC4899" 
+                    strokeWidth={2}
+                    dot={{ r: 4, stroke: '#EC4899', strokeWidth: 2, fill: '#FFFFFF' }}
+                    activeDot={{ r: 6, stroke: '#EC4899', strokeWidth: 2, fill: '#EC4899' }}
+                  />
+                )}
               </>
             ) : (
               <Line 
