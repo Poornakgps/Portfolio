@@ -16,7 +16,7 @@ const Footer = () => {
             </div>
             <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-md">
               Chemical Engineering student at IIT Kharagpur with a passion for competitive programming,
-              algorithm design, and full-stack development.
+              algorithm design, and Backend development.
             </p>
             <div className="mt-6 flex space-x-4">
               <a 
