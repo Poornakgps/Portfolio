@@ -12,7 +12,8 @@ const Hero = () => {
     'Competitive Programmer',
     'Problem Solver',
     'Algorithm Enthusiast',
-    'Backend Developer'
+    'Backend Developer',
+    'AI Enthusiast'
   ];
 
   useEffect(() => {
