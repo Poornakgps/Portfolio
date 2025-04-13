@@ -1,10 +1,72 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Server, Database, BarChart3, Book, Terminal } from 'lucide-react';
+import { ArrowRight, Code, Server, Database, Book, Terminal, Star } from 'lucide-react';
 import Section from '../components/ui/Section';
-import { skills } from '../data/skills';
+
+// Component for displaying star ratings
+const StarRating = ({ rating }) => {
+  // Handle half stars
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+  
+  return (
+    <div className="flex">
+      {/* Full stars */}
+      {[...Array(fullStars)].map((_, i) => (
+        <Star key={`filled-${i}`} className="w-5 h-5 text-yellow-500 fill-current" />
+      ))}
+      
+      {/* Half star */}
+      {hasHalfStar && (
+        <div className="relative w-5 h-5">
+          <Star className="absolute w-5 h-5 text-gray-300 dark:text-gray-600" />
+          <div className="absolute overflow-hidden w-2.5 h-5">
+            <Star className="w-5 h-5 text-yellow-500 fill-current" />
+          </div>
+        </div>
+      )}
+      
+      {/* Empty stars */}
+      {[...Array(emptyStars)].map((_, i) => (
+        <Star key={`empty-${i}`} className="w-5 h-5 text-gray-300 dark:text-gray-600" />
+      ))}
+    </div>
+  );
+};
 
 const Skills = () => {
+  // Updated skills data with star ratings
+  const updatedSkills = [
+    {
+      category: 'Programming Languages',
+      items: [
+        { name: 'C/C++', rating: 4.5, color: 'bg-blue-500' },
+        { name: 'Python', rating: 4, color: 'bg-yellow-500' },
+        { name: 'JavaScript', rating: 4, color: 'bg-green-500' },
+        { name: 'SQL', rating: 4, color: 'bg-purple-500' }
+      ]
+    },
+    {
+      category: 'Libraries & Frameworks',
+      items: [
+        { name: 'C++ STL', rating: 4.5, color: 'bg-blue-500' },
+        { name: 'Node.js', rating: 4, color: 'bg-green-500' },
+        { name: 'FastAPI', rating: 4, color: 'bg-yellow-500' },
+        { name: 'Django', rating: 3.5, color: 'bg-green-600' },
+        { name: 'Java', rating: 3.5, color: 'bg-red-500' }
+      ]
+    },
+    {
+      category: 'Cloud & DevOps',
+      items: [
+        { name: 'AWS', rating: 3, color: 'bg-orange-500' },
+        { name: 'Docker', rating: 3.5, color: 'bg-blue-500' },
+        { name: 'GitHub', rating: 4, color: 'bg-gray-700' }
+      ]
+    }
+  ];
+  
   const getIcon = (category) => {
     switch(category) {
       case 'Programming Languages':
@@ -13,8 +75,6 @@ const Skills = () => {
         return Terminal;
       case 'Cloud & DevOps':
         return Server;
-      case 'Algorithms & Data Structures':
-        return BarChart3;
       default:
         return Book;
     }
@@ -27,7 +87,7 @@ const Skills = () => {
         subtitle="My technical expertise across various domains"
       >
         <div className="space-y-12">
-          {skills.map((skillCategory, index) => {
+          {updatedSkills.map((skillCategory, index) => {
             const Icon = getIcon(skillCategory.category);
             
             return (
@@ -39,17 +99,12 @@ const Skills = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                   {skillCategory.items.map((skill, skillIndex) => (
-                    <div key={skillIndex}>
-                      <div className="flex justify-between mb-1">
+                    <div key={skillIndex} className="flex flex-col space-y-2">
+                      <div className="flex justify-between items-center">
                         <span className="text-base font-medium text-gray-900 dark:text-white">{skill.name}</span>
-                        <span className="text-sm font-medium text-gray-600 dark:text-gray-300">{skill.level}%</span>
+                        <span className="text-sm font-medium text-gray-600 dark:text-gray-300">{skill.rating}/5</span>
                       </div>
-                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                        <div 
-                          className={`h-2.5 rounded-full ${skill.color}`} 
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
-                      </div>
+                      <StarRating rating={skill.rating} />
                     </div>
                   ))}
                 </div>

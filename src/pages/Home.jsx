@@ -165,7 +165,7 @@ const Home = () => {
               <Github size={20} className="mr-2" /> GitHub
             </a>
             <a 
-              href="https://linkedin.com/in/poornachandra-doddi" 
+              href="https://www.linkedin.com/in/poornachandra-doddi-7a504a238/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center px-4 py-2 bg-white text-blue-700 rounded-md shadow-sm hover:bg-blue-50 transition-colors"

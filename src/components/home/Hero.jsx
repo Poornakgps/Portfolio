@@ -10,9 +10,9 @@ const Hero = () => {
   
   const textArray = [
     'Competitive Programmer',
-    'Full Stack Developer',
     'Problem Solver',
-    'Algorithm Enthusiast'
+    'Algorithm Enthusiast',
+    'Backend Developer'
   ];
 
   useEffect(() => {
