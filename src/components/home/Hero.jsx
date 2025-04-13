@@ -9,11 +9,11 @@ const Hero = () => {
   const [typingSpeed, setTypingSpeed] = useState(100);
   
   const textArray = [
-    'Competitive Programmer',
-    'Problem Solver',
-    'Algorithm Enthusiast',
-    'Backend Developer',
-    'AI Enthusiast'
+    'a Competitive Programmer',
+    'a Problem Solver',
+    'an Algorithm Enthusiast',
+    'a Backend Developer',
+    'an AI Enthusiast'
   ];
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const Hero = () => {
           <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
             <span className="block">Hi, I'm Poornachandra Doddi</span>
             <span className="block mt-2 text-blue-600 dark:text-blue-400 h-16">
-              I'm a <span className="inline-block min-w-0">{typedText}</span>
+              I'm <span className="inline-block min-w-0">{typedText}</span>
               <span className="animate-blink">|</span>
             </span>
           </h1>
