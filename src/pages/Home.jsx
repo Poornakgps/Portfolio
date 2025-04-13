@@ -4,7 +4,6 @@ import { ArrowRight, Github, Linkedin, Mail, Phone, Award, Code, Briefcase } fro
 import Hero from '../components/home/Hero';
 import Stats from '../components/home/Stats';
 import Section from '../components/ui/Section';
-import ProjectCard from '../components/projects/ProjectCard';
 import competitiveData from '../data/competitive';
 
 const Home = () => {
@@ -13,30 +12,6 @@ const Home = () => {
     { label: 'CodeChef', value: '4-Star (1894)', icon: Award, color: 'text-yellow-600', desc: 'Top 1.8%' },
     { label: 'Best CF Rank', value: '452', icon: Award, color: 'text-green-600', desc: 'Div.3 Round 917' },
     { label: 'Problems Solved', value: '800+', icon: Code, color: 'text-purple-600', desc: 'And counting...' },
-  ];
-
-  const featuredProjects = [
-    {
-      id: 1,
-      title: 'Multi-Agent AI Orchestrator',
-      description: 'PDF question answering system using Google Gemini 2.0, LangChain, and FAISS',
-      tags: ['FastAPI', 'LangChain', 'FAISS', 'Streamlit'],
-      link: '#'
-    },
-    {
-      id: 2,
-      title: 'Dynamic Vehicle Route Planning',
-      description: 'Optimized vehicle assignment for 500 orders using CSP formulation and heuristic algorithms',
-      tags: ['Python', 'SUMO', 'OpenStreetMap', 'Algorithms'],
-      link: '#'
-    },
-    {
-      id: 3,
-      title: 'To-Do Serverless Application',
-      description: 'Serverless application using AWS Lambda, API Gateway, and DynamoDB',
-      tags: ['AWS', 'Lambda', 'DynamoDB', 'Serverless'],
-      link: '#'
-    }
   ];
 
   return (
@@ -92,22 +67,6 @@ const Home = () => {
               </Link>
             </div>
           </div>
-        </div>
-      </Section>
-      
-      <Section title="Featured Projects" subtitle="Recent Work" className="bg-gray-50 dark:bg-gray-900">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featuredProjects.map(project => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
-        <div className="mt-8 text-center">
-          <Link 
-            to="/projects" 
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            View All Projects <ArrowRight size={16} className="ml-2" />
-          </Link>
         </div>
       </Section>
       
