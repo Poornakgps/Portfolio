@@ -89,7 +89,7 @@ const Hero = () => {
           
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center sm:justify-start">
             <a 
-              href="/resume.pdf"
+              href="/Poornachandra_SDEN.pdf"
               download
               className="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
